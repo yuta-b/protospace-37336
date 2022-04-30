@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :show, :update, :destroy]
-  before_action :authenticate_user!, exept: [:index, :show]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
+  
 
   def index
     @prototypes = Prototype.includes(:user)
@@ -26,9 +26,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+
   end
 
   def update
