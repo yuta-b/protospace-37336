@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :show, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
 
@@ -8,7 +9,7 @@ class PrototypesController < ApplicationController
   end
 
   def new
-    @prototype = Prototype.new
+      @prototype = Prototype.new
   end
 
   def create
@@ -26,7 +27,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-
+  
   end
 
   def update
